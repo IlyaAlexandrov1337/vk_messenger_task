@@ -14,7 +14,7 @@ const useFetchList = () => {
 			const timeoutFlag = setTimeout(() => {
 				const getData = async () => {
 					try {
-						const res = await fetch(getPath(data.term, 2));
+						const res = await fetch(getPath(data.term, 112));
 						const gifs = await res.json()
 						setData({ ...data, results: gifs.results });
 					} catch (err) {

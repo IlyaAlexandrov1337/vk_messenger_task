@@ -1,5 +1,5 @@
 import './App.css';
-import useFetchList from "./hooks/useFetch";
+import useFetchList from "./hooks/useFetchList";
 import ListOfGifs from "./components/ListOfGifs";
 
 function App() {
