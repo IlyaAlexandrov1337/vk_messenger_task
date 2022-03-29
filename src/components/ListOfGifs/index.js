@@ -1,13 +1,11 @@
 import React from "react";
 import Gif from "../Gif";
+import Masonry from "react-responsive-masonry"
 
 export default function ListOfGifs({data}) {
-	const { term: name, results: list } = data
 	return (
-		<>
-			<h1>{name}</h1>
-				{list.map(gif => <Gif key={gif.id}
-									  url={gif.media[0].gif.url} alt={gif.content_description}/>)}
-		</>
+		<Masonry gutter={6}> {data.map(gif => <Gif key={gif.id} dims={gif.media[0].gif.dims}
+								  url={gif.media[0].gif.url} alt={gif.content_description}/>)}
+		</Masonry>
 	);
 }
