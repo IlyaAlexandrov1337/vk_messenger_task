@@ -20,6 +20,7 @@ function App() {
           </main>
           <footer className="App-search">
               <input
+                  className="App-searchbar"
                   autoFocus={true}
                   type="text"
                   placeholder="Find gifs"

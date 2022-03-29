@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from "react";
+import style from './Gif.module.css'
 
 export default function Gif({url, alt, dims}) {
 	const [img, setImg] = useState('');
@@ -16,10 +17,8 @@ export default function Gif({url, alt, dims}) {
 
 	return (
 		<>
-			{img !== '' ? <img src={img} alt={alt} /> : <div style={{
-				aspectRatio: `${dims[0]/dims[1]}`,
-				display: 'block',
-				background: 'greenyellow'}}>Loading...</div>}
+			{img !== '' ? <img className={style.Gif} src={img} alt={alt} /> : <div className={style.Loading} style={{
+				aspectRatio: `${dims[0]/dims[1]}`,}}>Loading...</div>}
 		</>
 	);
 }

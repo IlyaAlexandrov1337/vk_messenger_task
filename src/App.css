@@ -3,19 +3,47 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  overflow-y: hidden;
+  overflow: hidden;
 }
 
 .App-main {
-  padding: 1.5rem;
+  margin: 2rem 0.8rem;
   overflow-y: auto;
   flex-grow: 1;
+  scrollbar-width: thin;
+  scrollbar-color: #DAE2EA transparent;
+}
+
+.App-main::-webkit-scrollbar {
+  width: 12px;
+}
+
+.App-main::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.App-main::-webkit-scrollbar-thumb {
+  background-color: #DAE2EA;
+  border-radius: 20px;
 }
 
 
 .App-search {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 1.3rem 1.5rem;
   width: 100%;
-  background: #111;
-  padding-top: 1.5rem;
+  background: #FAFBFC;
+  border: 1px solid #DCE1E6;
+  border-radius: 0 0 4px 4px;
   flex-shrink: 0;
+}
+
+.App-searchbar {
+  width: 90%;
+  height: 130%;
+  background: #FFFFFF;
+  border: 1px solid #D3D9DE;
+  border-radius: 6px;
 }
