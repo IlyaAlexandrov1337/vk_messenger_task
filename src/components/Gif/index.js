@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useCallback, useEffect, useState} from "react";
 import style from './Gif.module.css'
 
 export default function Gif({url, alt, dims}) {
@@ -15,10 +15,17 @@ export default function Gif({url, alt, dims}) {
 		fetchGif();
 	}, []);
 
+	const handleClick= useCallback((e) => {
+		const { nodeName } = e.target;
+		if (nodeName === 'IMG') {
+			console.log(e.target)
+		}
+	}, [])
+
 	return (
 		<>
-			{img !== '' ? <img className={style.Gif} src={img} alt={alt} /> : <div className={style.Loading} style={{
-				aspectRatio: `${dims[0]/dims[1]}`,}}>Loading...</div>}
+			{img !== '' ? <img onClick={handleClick} className={style.Gif} src={img} alt={alt} /> :
+				<div className={style.Loading} style={{aspectRatio: `${dims[0]/dims[1]}`}}>Loading...</div>}
 		</>
 	);
 }

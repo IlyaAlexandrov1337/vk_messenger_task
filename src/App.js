@@ -7,6 +7,7 @@ import { ResponsiveMasonry } from "react-responsive-masonry"
 function App() {
   const [data, setData] = useFetchList();
   console.log(data)
+
   return (
       <div className="App">
           <main className="App-main">
