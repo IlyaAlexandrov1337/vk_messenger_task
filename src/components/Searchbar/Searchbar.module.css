@@ -1,0 +1,11 @@
+.searchbar {
+    width: 50%;
+    height: 130%;
+    background: #FFFFFF;
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    border: 1px solid #D3D9DE;
+    border-radius: 6px;
+    margin-left: 2rem;
+    font-size: 1.2em;
+}

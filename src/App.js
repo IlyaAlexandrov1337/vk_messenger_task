@@ -1,35 +1,53 @@
 import './App.css';
+import React, {useCallback, useState} from "react";
+import Modal from 'react-modal';
 import useFetchList from "./hooks/useFetchList";
 import ListOfGifs from "./components/ListOfGifs";
-import { ResponsiveMasonry } from "react-responsive-masonry"
+import Searchbar from "./components/Searchbar";
+import { Context } from "./context";
 
 
 function App() {
   const [data, setData] = useFetchList();
-  console.log(data)
+  const [context, setContext] = useState({});
+
+    const [modalIsOpen, setIsOpen] = useState(false);
+
+    const openModal= useCallback(() => {
+        setIsOpen(true);
+    }, [])
+
+    const closeModal= useCallback(() => {
+        setIsOpen(false);
+    }, [])
 
   return (
-      <div className="App">
-          <main className="App-main">
-              {data.results.length === 0 ? null :
-                  <ResponsiveMasonry
-                      columnsCountBreakPoints={{350: 1, 750: 2, 900: 3}}
-                  >
+      <Context.Provider value={[context, setContext]}>
+          <div className="App">
+              <button onClick={openModal}>Open Modal</button>
+              <Modal
+                  isOpen={modalIsOpen}
+                  ariaHideApp={false}
+                  onRequestClose={closeModal}
+                  contentLabel="Example Modal"
+                  overlayClassName="App-modal-overlay"
+                  className="App-modal-content"
+              >
+                  <button onClick={closeModal}>close</button>
+                  {Object.entries(context).map(message =>
+                      <div>Гифка с id={message[0]} отправлена {message[1]}</div>)}
+              </Modal>
+              <main className="App-main">
+                  {!data.results ? <p>Проверьте поисковый запрос</p> :
+                      data.results.length === 0 ? <p>Пусто</p> :
                       <ListOfGifs data={data.results} />
-                  </ResponsiveMasonry>
-              }
-          </main>
-          <footer className="App-search">
-              <input
-                  className="App-searchbar"
-                  autoFocus={true}
-                  type="text"
-                  placeholder="Find gifs"
-                  value={data.term}
-                  onChange={(e) => setData({ ...data, term: e.target.value })}
-              />
-          </footer>
-      </div>
+                  }
+              </main>
+              <footer className="App-search">
+                  <Searchbar data={data} setData={setData}/>
+              </footer>
+          </div>
+      </Context.Provider>
   );
 }
 

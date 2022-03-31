@@ -1,31 +1,44 @@
-import React, {useCallback, useEffect, useState} from "react";
+import React, { useEffect, useState, useContext } from "react";
+import { Context } from "../../context";
 import style from './Gif.module.css'
 
-export default function Gif({url, alt, dims}) {
+export default function Gif({id, url, alt, dims}) {
 	const [img, setImg] = useState('');
-
-	const fetchGif = async () => {
-		const res = await fetch(url);
-		const imageBlob = await res.blob();
-		const imageObjectURL = URL.createObjectURL(imageBlob);
-		setImg(imageObjectURL);
-	};
+	const [context, setContext] = useContext(Context);
 
 	useEffect(() => {
+		const fetchGif = async () => {
+			const res = await fetch(url);
+			const imageBlob = await res.blob();
+			const imageObjectURL = URL.createObjectURL(imageBlob);
+			setImg(imageObjectURL);
+		};
 		fetchGif();
-	}, []);
-
-	const handleClick= useCallback((e) => {
-		const { nodeName } = e.target;
-		if (nodeName === 'IMG') {
-			console.log(e.target)
+		return () => {
+			setImg('');
 		}
-	}, [])
+	}, [url]);
+
+	const handleClick= (e) => {
+		const {nodeName} = e.target;
+		if (nodeName === 'IMG') {
+			const currentDate = new Date();
+			const datetime = currentDate.getDate() + "/"
+				+ (currentDate.getMonth() + 1) + "/"
+				+ currentDate.getFullYear() + " в "
+				+ currentDate.getHours() + ":"
+				+ currentDate.getMinutes() + ":"
+				+ currentDate.getSeconds();
+			setContext(context => ({...context, [id]: datetime}))
+		}
+	}
 
 	return (
 		<>
-			{img !== '' ? <img onClick={handleClick} className={style.Gif} src={img} alt={alt} /> :
-				<div className={style.Loading} style={{aspectRatio: `${dims[0]/dims[1]}`}}>Loading...</div>}
+			{img !== '' ?
+				<img onClick={handleClick} className={context[id] ? style.GifSent : style.Gif} src={img} alt={alt} /> :
+				<div className={style.Loading} style={{aspectRatio: `${dims[0]/dims[1]}`,}}>Loading...</div>
+			}
 		</>
 	);
 }

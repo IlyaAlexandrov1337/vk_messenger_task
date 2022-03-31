@@ -1,13 +1,20 @@
+@import url(http://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300ita‌​lic,400italic,500,500italic,700,700italic,900italic,900);
+html, body, html * {
+  font-family: 'Roboto', sans-serif;
+}
+
 .App {
   height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  align-items: center;
   overflow: hidden;
 }
 
 .App-main {
-  margin: 2rem 0.8rem;
+  width: 80%;
+  margin: 4rem 1rem 2rem;
+  padding: 0 1rem;
   overflow-y: auto;
   flex-grow: 1;
   scrollbar-width: thin;
@@ -28,22 +35,46 @@
 }
 
 
+.App-modal-overlay {
+  position: fixed;
+  top: 15%;
+  left: 73%;
+}
+
+.App-modal-content {
+  border: 1px solid #ccc;
+  width: 20vw;
+  height: 65vh;
+  overflow: auto;
+  border-radius: 4px;
+  outline: none;
+  background-color: #DCE1E5;
+  padding: 10%;
+  scrollbar-width: thin;
+  scrollbar-color: white transparent;
+}
+
+.App-modal-content::-webkit-scrollbar {
+  width: 0.4rem;
+}
+
+.App-modal-content::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.App-modal-content::-webkit-scrollbar-thumb {
+  background-color: white;
+  border-radius: 20px;
+}
+
 .App-search {
   display: flex;
   flex-direction: row;
   align-items: center;
   padding: 1.3rem 1.5rem;
   width: 100%;
-  background: #FAFBFC;
+  background: #DCE1E5;
   border: 1px solid #DCE1E6;
   border-radius: 0 0 4px 4px;
   flex-shrink: 0;
-}
-
-.App-searchbar {
-  width: 90%;
-  height: 130%;
-  background: #FFFFFF;
-  border: 1px solid #D3D9DE;
-  border-radius: 6px;
 }
