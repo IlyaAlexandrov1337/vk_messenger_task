@@ -12,7 +12,7 @@ html, body, html * {
 }
 
 .App-main {
-  width: 80%;
+  width: 65%;
   margin: 4rem 1rem 2rem;
   padding: 0 1rem;
   overflow-y: auto;
@@ -34,37 +34,16 @@ html, body, html * {
   border-radius: 20px;
 }
 
-
-.App-modal-overlay {
+.App-log {
   position: fixed;
-  top: 15%;
-  left: 73%;
+  top: 30%;
+  right: 85%;
 }
 
-.App-modal-content {
-  border: 1px solid #ccc;
-  width: 20vw;
-  height: 65vh;
-  overflow: auto;
-  border-radius: 4px;
-  outline: none;
-  background-color: #DCE1E5;
-  padding: 10%;
-  scrollbar-width: thin;
-  scrollbar-color: white transparent;
-}
-
-.App-modal-content::-webkit-scrollbar {
-  width: 0.4rem;
-}
-
-.App-modal-content::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-.App-modal-content::-webkit-scrollbar-thumb {
-  background-color: white;
-  border-radius: 20px;
+.App-info {
+  position: fixed;
+  top: 50%;
+  right: 85%;
 }
 
 .App-search {
