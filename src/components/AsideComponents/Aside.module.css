@@ -3,6 +3,10 @@
     background-color: #DCE1E5;
 }
 
+.OpenButton:active {
+    background-color: lightgreen;
+}
+
 .CloseButton {
     display: block;
     margin-left: auto;

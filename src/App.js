@@ -21,10 +21,10 @@ function App() {
                       <ListOfGifs data={data.results} />
                   }
               </main>
-              <aside className="App-log">
+              <aside tabIndex="1" className="App-log">
                   <Log />
               </aside>
-              <aside className="App-info">
+              <aside tabIndex="2" className="App-info">
                   <Info />
               </aside>
               <footer className="App-search">

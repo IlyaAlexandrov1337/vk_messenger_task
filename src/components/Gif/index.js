@@ -29,7 +29,8 @@ export default function Gif({id, url, alt, dims}) {
 	return (
 		<>
 			{img !== '' ?
-				<img tabIndex="0" onClick={handleClick}
+				<img tabIndex={context[id] ? -1 : 0} onClick={handleClick}
+					 onKeyPress={(e) => e.key === 'Enter' && handleClick(e)}
 					 className={context[id] ? style.GifSent : style.Gif} src={img} alt={alt} /> :
 				<div className={style.Loading} style={{aspectRatio: `${dims[0]/dims[1]}`,}}>Loading...</div>
 			}
