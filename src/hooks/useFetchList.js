@@ -21,7 +21,16 @@ const useFetchList = () => {
 					try {
 						const res = await fetch(getPath(searchTerm, 12, pos));
 						const gifs = await res.json();
-						setData({...data, results: gifs.results});
+						const formedGifs = gifs.results.map(gif => ({
+							id: gif.id,
+							dimensions: {
+								width: gif.media[0].gif.dims[0],
+								height: gif.media[0].gif.dims[1],
+							},
+							url: gif.media[0].gif.url,
+							description: gif.content_description,
+						}));
+						setData({...data, results: formedGifs});
 					} catch (err) {
 						console.error(err);
 					}
@@ -31,7 +40,7 @@ const useFetchList = () => {
 			}, 1000);
 			return () => clearTimeout(timeoutFlag);
 		}
-	}, [data]);
+	}, [data.term]);
 
 	return [data, setData];
 };

@@ -3,7 +3,7 @@ import Context from '../../context';
 import PropTypes from 'prop-types';
 import style from './Gif.module.css';
 
-export default function Gif({id, url, alt, dims}) {
+export default function Gif({id, url, description, dimensions}) {
 	const [img, setImg] = useState('');
 	const [context, setContext] = useContext(Context);
 
@@ -33,14 +33,15 @@ export default function Gif({id, url, alt, dims}) {
 	return (
 		<>
 			{img === ''
-				? <div className={style.Loading} style={{aspectRatio: `${dims[0] / dims[1]}`}}>Loading...</div>
+				? <div className={style.Loading} style={{aspectRatio: `${dimensions.width / dimensions.height}`}}>
+					Loading...</div>
 				: <img
 					tabIndex={context[id] ? -1 : 0}
 					onClick={handleClick}
 					onKeyPress={e => e.key === 'Enter' && handleClick(e)}
 					className={context[id] ? style.GifSent : style.Gif}
 					src={img}
-					alt={alt}
+					alt={description}
 				/>
 			}
 		</>
@@ -49,6 +50,10 @@ export default function Gif({id, url, alt, dims}) {
 
 Gif.propTypes = {
 	id: PropTypes.string,
+	dimensions: PropTypes.shape({
+		width: PropTypes.number,
+		height: PropTypes.number,
+	}),
 	url: PropTypes.string,
-	alt: PropTypes.string,
-	dims: PropTypes.arrayOf(PropTypes.number)};
+	description: PropTypes.string,
+};

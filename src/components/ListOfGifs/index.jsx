@@ -11,9 +11,9 @@ export default function ListOfGifs({data}) {
 					<Gif
 						id={gif.id}
 						key={gif.id}
-						dims={gif.media[0].gif.dims}
-						url={gif.media[0].gif.url}
-						alt={gif.content_description}
+						dimensions={gif.dimensions}
+						url={gif.url}
+						description={gif.description}
 					/>
 				))}
 			</Masonry>
@@ -22,5 +22,13 @@ export default function ListOfGifs({data}) {
 }
 
 ListOfGifs.propTypes = {
-	data: PropTypes.arrayOf(PropTypes.object),
+	data: PropTypes.arrayOf(PropTypes.shape({
+		id: PropTypes.string,
+		dimensions: PropTypes.shape({
+			width: PropTypes.number,
+			height: PropTypes.number,
+		}),
+		url: PropTypes.string,
+		description: PropTypes.string,
+	})),
 };
