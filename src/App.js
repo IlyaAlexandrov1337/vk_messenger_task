@@ -15,7 +15,7 @@ function App() {
   return (
       <Context.Provider value={[context, setContext]}>
           <div className="App">
-              <main tabIndex="-1" className="App-main">
+              <main className="App-main">
                   {!data.results ? <p>Проверьте поисковый запрос</p> :
                       data.results.length === 0 ? <p>Пусто</p> :
                       <ListOfGifs data={data.results} />

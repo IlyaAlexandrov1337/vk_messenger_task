@@ -22,14 +22,7 @@ export default function Gif({id, url, alt, dims}) {
 	const handleClick= (e) => {
 		const {nodeName} = e.target;
 		if (nodeName === 'IMG') {
-			const currentDate = new Date();
-			const datetime = currentDate.getDate() + "/"
-				+ (currentDate.getMonth() + 1) + "/"
-				+ currentDate.getFullYear() + " в "
-				+ currentDate.getHours() + ":"
-				+ currentDate.getMinutes() + ":"
-				+ currentDate.getSeconds();
-			setContext(context => ({...context, [id]: datetime}))
+			if (!context[id]) setContext(context => ({...context, [id]: new Date()}))
 		}
 	}
 

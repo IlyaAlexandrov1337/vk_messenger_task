@@ -1,6 +1,12 @@
-.Button {
+.OpenButton {
+    display: block;
+    background-color: #DCE1E5;
+}
+
+.CloseButton {
     display: block;
     margin-left: auto;
+    margin-bottom: 2%;
     border: none;
     background: transparent;
 }
@@ -19,32 +25,37 @@
 }
 
 .InfoModalContent {
-    overflow: auto;
+    display: flex;
+    font-size: 1.2em;
+    flex-direction: column;
+    justify-content: flex-start;
+    overflow: hidden;
+    border: 1px solid #ccc;
+    border-radius: 4px;
     outline: none;
+    background-color: #DCE1E5;
     padding: 10%;
-    scrollbar-width: thin;
-    scrollbar-color: white transparent;
 }
 
 .LogModalOverlay {
     position: fixed;
     top: 15%;
-    right: 80%;
+    right: 65%;
 }
 
 .LogModalContent {
     display: flex;
     flex-direction: column;
+    width: 30vw;
+    height: 50vh;
     justify-content: flex-start;
     align-items: center;
     overflow: hidden;
     border: 1px solid #ccc;
-    width: 10vw;
-    height: 35vh;
     border-radius: 4px;
     outline: none;
     background-color: #DCE1E5;
-    padding: 10%;
+    padding: 5%;
 }
 
 .LogModalContentButton {
@@ -56,6 +67,7 @@
 
 .LogModalContentText {
     overflow: auto;
+    width: 100%;
     scrollbar-width: thin;
     scrollbar-color: white transparent;
 }

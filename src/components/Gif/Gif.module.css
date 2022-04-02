@@ -29,16 +29,5 @@
     margin: 1.5%;
     align-items: center;
     justify-content: center;
-    background: greenyellow;
-}
-
-.Message {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
-.NoneMessage {
-    display: none;
+    background: #DCE1E5;
 }

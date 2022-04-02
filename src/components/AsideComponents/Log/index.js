@@ -3,8 +3,10 @@ import {Context} from "../../../context";
 import { BsJournalText } from "react-icons/bs";
 import style from "../Aside.module.css"
 import Modal from "react-modal";
-import  {IconContext } from "react-icons";
+import { IconContext } from "react-icons";
 import { ImCancelCircle } from "react-icons/im";
+
+const pad = n => n < 10 ? `0${n}` : n
 
 export default function Log() {
 	const [modalIsOpen, setIsOpen] = useState(false);
@@ -21,7 +23,7 @@ export default function Log() {
 	return (
 		<>
 			<IconContext.Provider value={{ color: "blue", size: "2em" }}>
-			<button onClick={openModal}><BsJournalText /></button>
+			<button className={style.OpenButton} onClick={openModal}><BsJournalText /></button>
 			</IconContext.Provider>
 			<Modal
 				isOpen={modalIsOpen}
@@ -31,15 +33,25 @@ export default function Log() {
 				overlayClassName={style.LogModalOverlay}
 				className={style.LogModalContent}
 			>
-
-					<button className={style.Button} onClick={closeModal}>
+					<button className={style.CloseButton} onClick={closeModal}>
 						<IconContext.Provider value={{ color: "red", size: "1.5em" }}>
 							<ImCancelCircle />
 						</IconContext.Provider>
 					</button>
 					<div className={style.LogModalContentText}>
-					{Object.entries(context).map(message =>
-						<div>Гифка с id={message[0]} отправлена {message[1]}</div>)}</div>
+					{Object.entries(context)
+						.sort((a, b) => a[1] - b[1])
+						.map(message => {
+							const datetime = pad(message[1].getDate()) + "/"
+								+ (pad(message[1].getMonth() + 1)) + "/"
+								+ message[1].getFullYear() + " в "
+								+ pad(message[1].getHours()) + ":"
+								+ pad(message[1].getMinutes()) + ":"
+								+ pad(message[1].getSeconds());
+							return <div key={message[0]}>
+								Гифка с <strong>id={message[0]} </strong> отправлена <b>{datetime}</b></div>
+						})}
+					</div>
 			</Modal>
 		</>
 	);
