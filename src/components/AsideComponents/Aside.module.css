@@ -13,15 +13,9 @@
 
 .InfoModalOverlay {
     position: fixed;
-    overflow-y: auto;
-    height: 96vh;
-    border: 1px solid #ccc;
     top: 3%;
     left: 2%;
     right: 2%;
-    bottom: 13%;
-    border-radius: 8px;
-    background-color: #DCE1E5;
 }
 
 .InfoModalContent {
@@ -30,11 +24,12 @@
     flex-direction: column;
     justify-content: flex-start;
     overflow: hidden;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+    border: 2px solid white;
+    border-radius: 8px;
     outline: none;
     background-color: #DCE1E5;
-    padding: 10%;
+    padding: 5%;
+    height: 65vh;
 }
 
 .LogModalOverlay {
@@ -51,36 +46,29 @@
     justify-content: flex-start;
     align-items: center;
     overflow: hidden;
-    border: 1px solid #ccc;
+    border: 2px solid white;
     border-radius: 4px;
     outline: none;
     background-color: #DCE1E5;
     padding: 5%;
 }
 
-.LogModalContentButton {
-    display: block;
-    margin-left: auto;
-    border: none;
-    background: transparent;
-}
-
-.LogModalContentText {
+.ModalContentText {
     overflow: auto;
     width: 100%;
     scrollbar-width: thin;
     scrollbar-color: white transparent;
 }
 
-.LogModalContentText::-webkit-scrollbar {
+.ModalContentText::-webkit-scrollbar {
     width: 0.4rem;
 }
 
-.LogModalContentText::-webkit-scrollbar-track {
+.ModalContentText::-webkit-scrollbar-track {
     background: transparent;
 }
 
-.LogModalContentText::-webkit-scrollbar-thumb {
+.ModalContentText::-webkit-scrollbar-thumb {
     background-color: white;
     border-radius: 20px;
 }

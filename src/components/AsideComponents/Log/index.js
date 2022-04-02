@@ -1,4 +1,4 @@
-import React, {useCallback, useContext, useState} from "react";
+import React, { useCallback, useContext, useState } from "react";
 import {Context} from "../../../context";
 import { BsJournalText } from "react-icons/bs";
 import style from "../Aside.module.css"
@@ -38,7 +38,7 @@ export default function Log() {
 							<ImCancelCircle />
 						</IconContext.Provider>
 					</button>
-					<div className={style.LogModalContentText}>
+					<div className={style.ModalContentText}>
 					{Object.entries(context)
 						.sort((a, b) => a[1] - b[1])
 						.map(message => {
@@ -48,8 +48,8 @@ export default function Log() {
 								+ pad(message[1].getHours()) + ":"
 								+ pad(message[1].getMinutes()) + ":"
 								+ pad(message[1].getSeconds());
-							return <div key={message[0]}>
-								Гифка с <strong>id={message[0]} </strong> отправлена <b>{datetime}</b></div>
+							return <p key={message[0]}>
+								Гифка с <strong>id={message[0]} </strong> отправлена <b>{datetime}</b></p>
 						})}
 					</div>
 			</Modal>
