@@ -42,15 +42,15 @@ export default function Log() {
 					{Object.entries(context)
 						.sort((a, b) => a[1] - b[1])
 						.map(message => {
-							const datetime = `${pad(message[1].getDate())}/
-							${pad(message[1].getMonth() + 1)}/
-							${message[1].getFullYear()} в 
-							${pad(message[1].getHours())}:
-							${pad(message[1].getMinutes())}:
-							${pad(message[1].getSeconds())}`;
+							const datetime = pad(message[1].getDate()) + '/'
+							+ pad(message[1].getMonth() + 1) + '/'
+							+ message[1].getFullYear() + ' в '
+							+ pad(message[1].getHours()) + ':'
+							+ pad(message[1].getMinutes()) + ':'
+							+ pad(message[1].getSeconds());
 							return (
-								<p key={message[0]}>Гифка с
-									<strong>id={message[0]}</strong>{' '}отправлена{' '}<b>{datetime}</b></p>
+								<p key={message[0]}>Гифка с <strong>id={message[0]} </strong>
+									отправлена <b>{datetime}</b></p>
 							);
 						})}
 				</div>
